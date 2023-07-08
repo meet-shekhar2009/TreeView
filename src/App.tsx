@@ -4,22 +4,21 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 
 import ProtectedRoute from './auth/ProtectedRoute';
-import User from './redux-store/components/user';
+import User from './Components/user';
 import Login from './login';
 import { IS_AUTH, UserType } from './CustomHooks/storageUtils';
 import useLocalStorage from './CustomHooks/useLocalStorage';
-import TreeView from './Components/Tree';
+import TreeView from './Components/TreeView';
+import HomePage from './Components/home';
 
-const Counter = lazy(() => import('./redux-store/components/counter'));
+const Counter = lazy(() => import('./Components/counter'));
 
 function App() {
-  const HomePage = () => <h1>Home Page</h1>;
-
   const [user] = useLocalStorage<UserType>(IS_AUTH);
 
   return (
     <BrowserRouter>
-      <ul>
+      <ul className="menu">
         <li>
           <Link to="/">Home</Link>
         </li>
@@ -49,33 +48,35 @@ function App() {
         </div>
       )}
 
-      <Routes>
-        <Route path="/" element={<HomePage />}></Route>
-        <Route path="/counter" element={<ProtectedRoute />}>
-          <Route
-            path="/counter"
-            element={
-              <Suspense fallback="loading...">
-                <Counter />
-              </Suspense>
-            }
-          ></Route>
-        </Route>
-        <Route path="/hierarchy" element={<ProtectedRoute />}>
-          <Route
-            path="/hierarchy"
-            element={
-              <Suspense fallback="loading...">
-                <TreeView />
-              </Suspense>
-            }
-          ></Route>
-        </Route>
-        <Route path="/user" element={<ProtectedRoute />}>
-          <Route path="/user" element={<User />} />
-        </Route>
-        <Route path="/login" element={<Login />}></Route>
-      </Routes>
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<HomePage />}></Route>
+          <Route path="/counter" element={<ProtectedRoute />}>
+            <Route
+              path="/counter"
+              element={
+                <Suspense fallback="loading...">
+                  <Counter />
+                </Suspense>
+              }
+            ></Route>
+          </Route>
+          <Route path="/hierarchy" element={<ProtectedRoute />}>
+            <Route
+              path="/hierarchy"
+              element={
+                <Suspense fallback="loading...">
+                  <TreeView />
+                </Suspense>
+              }
+            ></Route>
+          </Route>
+          <Route path="/user" element={<ProtectedRoute />}>
+            <Route path="/user" element={<User />} />
+          </Route>
+          <Route path="/login" element={<Login />}></Route>
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }

@@ -1,0 +1,11 @@
+.node-container.editable input.user-template {
+  border: none;
+}
+.node-container.editable input.user-template:focus {
+  border: none;
+  outline: none;
+}
+.node-container input {
+  border: 1px solid #dfdddd;
+  border-radius: 3px;
+}

@@ -31,6 +31,10 @@ const Login: FunctionComponent<{}> = () => {
       });
     }
   }, []);
-  return <div ref={refSigninButton}></div>;
+  return (
+    <div className="login-container">
+      <div className="login-button" ref={refSigninButton}></div>
+    </div>
+  );
 };
 export default Login;

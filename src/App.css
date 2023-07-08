@@ -1,10 +1,77 @@
 ul {
   list-style: none;
 }
+.login-button {
+  width: 250px;
+  margin: 0px auto;
+  margin-top: 15%;
+}
+
 ul li {
   display: inline-block;
   padding: 10px;
 }
+
+/* -------menu----- */
+/* Primary color */
+:root {
+  --primary-color: #28a8f4;
+}
+.menu {
+  background-color: #28a8f4;
+  margin: 0px;
+}
+/* Menu styles */
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  background-color: var(--primary-color);
+}
+
+.menu li {
+  margin: 0;
+  padding: 5px;
+}
+
+.menu li a {
+  display: block;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: white;
+}
+
+.menu li a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* User login status */
+.user-login-status {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.user-login-status img {
+  margin-right: 5px;
+}
+
+.user-name {
+  margin-right: 10px;
+  color: white;
+}
+
+.logout {
+  cursor: pointer;
+  color: white;
+}
+
+.logout:hover {
+  text-decoration: underline;
+}
+
+/* --------end------- */
 .user-login-status {
   position: absolute;
   top: 10px;
@@ -17,7 +84,7 @@ ul li {
 .user-name {
   position: absolute;
   margin-top: 2px;
-  padding-left: 5px;
+  padding-left: 35px;
 }
 .logout {
   background: #28a8f4;
@@ -58,9 +125,12 @@ ul li {
   display: block;
   margin-left: 45px;
 }
-.action-btn {
+.action-btn-cmn {
   display: inline-block;
-
+  margin: 5px;
+  cursor: pointer;
+}
+.action-btn {
   color: #ffffff;
   border-radius: 50%;
   height: 17px;
@@ -68,7 +138,6 @@ ul li {
   font-size: 13px;
   text-align: center;
   cursor: pointer;
-  margin: 5px;
 }
 .add-btn {
   background-color: #28a8f4;
@@ -79,37 +148,35 @@ ul li {
 .display-flex {
   display: flex !important;
 }
-.margin-left-45 {
-  margin-left: 45px;
-}
-.margin-left-5 {
-  margin-left: 5px;
-}
+
 .add-btn-hover {
   display: none;
 }
 .text-box {
   padding: 5px;
-  min-width: 300px;
+  margin: 5px;
 }
-.node-textbox {
-  display: block;
-  border: 1px solid silver;
-  border-radius: 5px;
-}
+
 .add-li {
-  padding-bottom: 0px;
-  padding-left: 0px;
-  margin-left: 0px !important;
+  padding: 0px;
+  margin: 0px;
+  padding-top: 4px;
 }
-.editable-textbox {
-  border: none;
-  -webkit-appearance: none;
-}
-.editable-textbox:focus {
-  border: none;
-  outline: none;
-}
+
 .hide-container {
   visibility: hidden;
+}
+.node-container {
+  margin-left: 5px;
+  display: block;
+}
+.child-node-margin-left {
+  margin-left: 7%;
+  margin-top: 5px;
+}
+.node-container.editable {
+  display: inline-block;
+}
+.node-li {
+  padding: 5px 0px 0px 0px;
 }

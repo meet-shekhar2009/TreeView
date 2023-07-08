@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { decrementCounter, incrementCounter } from '../actions';
-import { State } from '../types';
+import { decrementCounter, incrementCounter } from '../../redux-store/actions';
+import { State } from '../../redux-store/types';
 import useLocalStorage from '../../CustomHooks/useLocalStorage';
 
 interface Props {
@@ -72,7 +72,7 @@ const StateCounter = () => {
 
 const Counter = () => {
   return (
-    <div className="counter-conatiner">
+    <div>
       <div>
         <ReduxCounter></ReduxCounter>
       </div>

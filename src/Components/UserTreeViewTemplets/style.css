@@ -1,0 +1,14 @@
+.full-width {
+  width: 85%;
+}
+.width-40 {
+  width: 42%;
+}
+.test-container {
+  border: 1px solid #dfd7d7;
+  background-color: #f5f1f1;
+  border-radius: 3px;
+}
+.text-box {
+  padding: 8px;
+}

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { saveUser } from '../actions';
-import { State, User, UserAction } from '../types';
+import { saveUser } from '../../redux-store/actions';
+import { State } from '../../redux-store/types';
 import { FunctionComponent } from 'react';
 import { Action } from 'redux';
 

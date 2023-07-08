@@ -5,13 +5,7 @@ import useLocalStorage from '../CustomHooks/useLocalStorage';
 
 const ProtectedRoute = () => {
   const [auth] = useLocalStorage(IS_AUTH);
-  return auth ? (
-    <div className="container">
-      <Outlet />
-    </div>
-  ) : (
-    <Navigate to="/login" />
-  );
+  return auth ? <Outlet /> : <Navigate to="/login" />;
 };
 
 export default ProtectedRoute;
