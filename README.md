@@ -49,3 +49,6 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 git remote add origin https://github.com/meet-shekhar2009/TreeView.git
 git branch -M main
 git push -u origin main
+
+docker build -t playground .
+docker run -p 8080:80 -d playground

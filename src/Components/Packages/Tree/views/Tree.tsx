@@ -12,7 +12,7 @@ const Tree = (props: TreeProps) => {
   return (
     <>
       <ul className="tree-ul">
-        {data.map((k) => (
+        {props.root.map((k) => (
           <li className="node-li" key={k.id}>
             <TreeNode
               currentNode={k}
@@ -34,6 +34,7 @@ const Tree = (props: TreeProps) => {
             ></TreeNode>
           </li>
         ))}
+
         {props.showAddButton && (
           <li key={uuidv4()} className="display-flex add-li">
             <TreeNode

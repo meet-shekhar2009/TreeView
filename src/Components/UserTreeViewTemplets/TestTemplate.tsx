@@ -1,43 +1,46 @@
 import { useState, MouseEvent } from 'react';
 import { TemplateProps } from '../Packages/Tree/types';
 import './style.css';
-const TestTemplate = ({ dataItem, handleSaveNode }: TemplateProps) => {
-  const [name, setName] = useState(dataItem?.name || '');
-  const [email, setEmail] = useState(dataItem?.email || '');
+import Input from '../Packages/Controls/Input';
 
-  const handleSaveItem = (e: MouseEvent) => {
-    handleSaveNode && handleSaveNode({ name, email });
-    setName('');
-    setEmail('');
+const EditableTableTemplate =
+  (controls: any[]) =>
+  ({ dataItem, handleSaveNode }: TemplateProps) => {
+    function getModel(controls: any) {
+      return (reset: boolean = false) => {
+        return controls.reduce((pre: any, { name }: { name: string }) => {
+          if (reset) {
+            pre[name] = '';
+            return pre;
+          }
+          pre[name] = dataItem?.[name] || '';
+          return pre;
+        }, {});
+      };
+    }
+
+    const [model, setModel] = useState(getModel(controls)());
+
+    const handleSaveItem = (e: MouseEvent) => {
+      handleSaveNode && handleSaveNode(model);
+      setModel(getModel(controls)(true));
+    };
+
+    return (
+      <div className="display-flex test-container">
+        {controls.map((props, index) => (
+          <div style={{ width: `${props.width}%` }} key={`contol- ${index}`}>
+            <Input {...props} model={model} setModel={setModel} />
+          </div>
+        ))}
+
+        <div>
+          <button className="padding-8 margin-5 btn" onClick={handleSaveItem}>
+            Save
+          </button>
+        </div>
+      </div>
+    );
   };
 
-  return (
-    <div className="display-flex test-container" style={{ width: '350px' }}>
-      <div className="width-40">
-        <input
-          type="text"
-          value={name}
-          className="text-box full-width"
-          onChange={(e) => setName(e.target.value)}
-          autoFocus
-        />
-      </div>
-      <div className="width-40">
-        <input
-          type="text"
-          value={email}
-          className="text-box full-width"
-          onChange={(e) => setEmail(e.target.value)}
-          autoFocus
-        />
-      </div>
-      <div style={{ width: '16%', textAlign: 'right' }}>
-        <button className="padding-8 margin-5 btn" onClick={handleSaveItem}>
-          Save
-        </button>
-      </div>
-    </div>
-  );
-};
-
-export default TestTemplate;
+export default EditableTableTemplate;

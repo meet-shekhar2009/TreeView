@@ -5,7 +5,7 @@ import { EnumAction } from './constant';
 const TreeView = (props: ExposedProps) => {
   let finalData: Node[] = props.data || [];
 
-  const findAndUpdate = (
+  const findAndUpdate = async (
     root: Node[],
     node: Node | null | undefined,
     value: Node | null,
@@ -17,6 +17,9 @@ const TreeView = (props: ExposedProps) => {
       if (node && iterator.id === node.id) {
         switch (action) {
           case EnumAction.ADD:
+            if (props.onAddRow && !(await props.onAddRow(value))) {
+              break;
+            }
             if (value) {
               if (iterator.Children) {
                 iterator.Children.push(value);
@@ -26,10 +29,16 @@ const TreeView = (props: ExposedProps) => {
             }
             break;
           case EnumAction.DELETE:
+            if (props.onDeleteRow && !(await props.onDeleteRow(root[index]))) {
+              break;
+            }
             root.splice(index, 1);
             if (root && root.length <= 0 && pre) pre.Children = undefined;
             break;
           case EnumAction.UPDATE:
+            if (props.onUpdateRow && !(await props.onUpdateRow(node))) {
+              break;
+            }
             root[index] = { ...iterator, ...node };
             break;
           default:
@@ -44,8 +53,15 @@ const TreeView = (props: ExposedProps) => {
     }
   };
 
-  const onSaveUpdateModal: TreeProps['onSave'] = (node, value, action) => {
+  const onSaveUpdateModal: TreeProps['onSave'] = async (
+    node,
+    value,
+    action
+  ) => {
     if (!node && value) {
+      if (props.onAddRow && !(await props.onAddRow(value))) {
+        return;
+      }
       finalData.push({ ...value });
     } else {
       findAndUpdate(finalData, node, value ? { ...value } : value, action);

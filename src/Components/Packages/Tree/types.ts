@@ -81,6 +81,9 @@ export interface ExposedOptionalProps {
   showAddButton?: boolean;
   showDeleteButton?: boolean;
   onDataChanges?: (data: Node[]) => void;
+  onAddRow?: (data: Node | null) => Promise<boolean> | boolean;
+  onUpdateRow?: (data: Node | null) => Promise<boolean> | boolean;
+  onDeleteRow?: (data: Node | null) => Promise<boolean> | boolean;
   render?: TreeProps['render'];
   addIcon?: JSX.Element;
   removeIcon?: JSX.Element;

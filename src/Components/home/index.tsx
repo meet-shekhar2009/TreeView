@@ -1,3 +1,4 @@
+import Layout from '../../Custom';
 import { IS_AUTH, UserType } from '../../CustomHooks/storageUtils';
 import useLocalStorage from '../../CustomHooks/useLocalStorage';
 import './style.css';
@@ -25,25 +26,29 @@ const HomePage = () => {
         </section>
       )}
 
-      <section>
-        <h2>Projects</h2>
-        <ul>
-          <li>
-            <h3>Project 1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </li>
-          <li>
-            <h3>Project 2</h3>
-            <p>
-              Ut tristique diam non ligula iaculis, eget cursus urna rutrum.
-            </p>
-          </li>
-          <li>
-            <h3>Project 3</h3>
-            <p>Phasellus vitae turpis eget diam viverra gravida nec id nisl.</p>
-          </li>
-        </ul>
-      </section>
+      <Layout>
+        <section>
+          <h2>Projects</h2>
+          <ul>
+            <li>
+              <h3>Project 1</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </li>
+            <li>
+              <h3>Project 2</h3>
+              <p>
+                Ut tristique diam non ligula iaculis, eget cursus urna rutrum.
+              </p>
+            </li>
+            <li>
+              <h3>Project 3</h3>
+              <p>
+                Phasellus vitae turpis eget diam viverra gravida nec id nisl.
+              </p>
+            </li>
+          </ul>
+        </section>
+      </Layout>
     </main>
   );
 };

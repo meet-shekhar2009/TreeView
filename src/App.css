@@ -114,6 +114,11 @@ ul li {
   background-color: #28a8f4;
   color: #ffffff;
 }
+
+.btn:hover {
+  opacity: 0.8;
+}
+
 .input-control {
   width: 14%;
 }
@@ -176,7 +181,72 @@ ul li {
 }
 .node-container.editable {
   display: inline-block;
+  width: 90%;
 }
 .node-li {
   padding: 5px 0px 0px 0px;
+}
+
+.divide-equal {
+  padding: 5px;
+  flex: 1;
+}
+
+.col-1 {
+  flex: 2;
+}
+.col-2 {
+  flex: 1;
+}
+.detail-width {
+  width: 60%;
+}
+.expense-detail .bold-text {
+  font-weight: bold;
+  background-color: #eeebeb;
+}
+
+.expense-detail .display-flex div {
+  padding: 5px;
+  border: 1px solid #eeebeb;
+}
+.balance {
+  margin: 10px 0px;
+  padding: 5px;
+  border: 1px solid #d1e9f7;
+  font-weight: bold;
+  background-color: #eeebeb;
+}
+.total-expense {
+  text-align: center;
+  margin-left: 150px;
+}
+.main-container {
+  display: flex;
+}
+@media only screen and (max-width: 768px) {
+  .main-container {
+    display: block;
+  }
+}
+.green-btn {
+  background-color: #09c251;
+  border: 1px solid #09c251;
+}
+
+.yellow-btn {
+  background-color: #e8714c;
+  border: 1px solid #e8714c;
+}
+
+.toast-container {
+  position: absolute;
+  padding: 20px;
+  border: 1px solid #9fea9f;
+  background-color: #d4f6d7;
+  color: #055905;
+  border-radius: 5px;
+  top: 65px;
+  right: 10px;
+  min-width: 200px;
 }

@@ -10,6 +10,11 @@ import { IS_AUTH, UserType } from './CustomHooks/storageUtils';
 import useLocalStorage from './CustomHooks/useLocalStorage';
 import TreeView from './Components/TreeView';
 import HomePage from './Components/home';
+import Layout from './Custom';
+import NoteIt from './Components/note-it';
+import ExpenseView from './Components/my-expenses';
+import FlowView from './Components/flow';
+import DraggableDiv from './Components/DraggableDiv';
 
 const Counter = lazy(() => import('./Components/counter'));
 
@@ -29,7 +34,19 @@ function App() {
           <Link to="/counter">Counter</Link>
         </li>
         <li>
-          <Link to="/hierarchy">Hierarchy</Link>
+          <Link to="/hierarchy">common</Link>
+        </li>
+        <li>
+          <Link to="/expenses">expenses</Link>
+        </li>
+        <li>
+          <Link to="/noteit">Note</Link>
+        </li>
+        <li>
+          <Link to="/flows">flows</Link>
+        </li>
+        <li>
+          <Link to="/draggablediv">Draggble Div</Link>
         </li>
       </ul>
       {user && (
@@ -61,20 +78,25 @@ function App() {
               }
             ></Route>
           </Route>
-          <Route path="/hierarchy" element={<ProtectedRoute />}>
-            <Route
-              path="/hierarchy"
-              element={
-                <Suspense fallback="loading...">
-                  <TreeView />
-                </Suspense>
-              }
-            ></Route>
-          </Route>
+
+          <Route
+            path="/hierarchy"
+            element={
+              <Suspense fallback="loading...">
+                <TreeView />
+              </Suspense>
+            }
+          ></Route>
+
           <Route path="/user" element={<ProtectedRoute />}>
             <Route path="/user" element={<User />} />
           </Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/custom" element={<Layout />}></Route>
+          <Route path="/noteit" element={<NoteIt />}></Route>
+          <Route path="/expenses" element={<ExpenseView />}></Route>
+          <Route path="/flows" element={<FlowView />}></Route>
+          <Route path="/draggablediv" element={<DraggableDiv />}></Route>
         </Routes>
       </div>
     </BrowserRouter>

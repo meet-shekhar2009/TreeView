@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dragable {
+  border: 0.2rem solid #0f2c65;
+  border-radius: 0.2rem;
+  position: absolute;
+  z-index: 9;
+  box-shadow: 2px 4px 18px rgba(0, 0, 0, 0.2);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#dragable.drag {
+  border-color: white;
+  box-shadow: 3px 6px 24px rgba(0, 0, 0, 0.5);
+}
+
+#dragable #dragzone {
+  width: 100%;
+  height: 100%;
+  cursor: move;
+  z-index: 10;
+  background-color: #0f2c65;
+}
+
+.wrapper .img-area,
+.social-icons a {
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+}
+
+.wrapper {
+  position: relative;
+  width: 320px;
+  padding: 5px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.wrapper .img-area {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-area .inner-area {
+  height: calc(100% - 25px);
+  width: calc(100% - 25px);
+  border-radius: 50%;
+}
+
+.inner-area img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.wrapper .name {
+  font-size: 23px;
+  font-weight: 500;
+  color: white;
+  margin: 10px 0 5px 0;
+}
+
+.wrapper .about {
+  color: #d0d1d7;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.wrapper .social-icons {
+  margin: 15px 0 25px 0;
+}
+
+.social-icons a {
+  position: relative;
+  height: 40px;
+  width: 40px;
+  margin: 0 5px;
+  display: inline-flex;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+.social-icons a i {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  font-size: 20px;
+  line-height: 35px;
+}
+.social-icons a:nth-last-child(1) i {
+  color: #13d151;
+}
+.social-icons a:nth-last-child(2) i {
+  color: #e6ba12;
+}
+.social-icons a:nth-last-child(3) i {
+  color: #1da9e9;
+}
+.social-icons a:nth-last-child(4) i {
+  color: #f23400;
+}
+
+.dragabble-container {
+  height: 70vh;
+  width: 70vw;
+  background-color: rgb(159, 243, 243);
+  position: relative;
+}
