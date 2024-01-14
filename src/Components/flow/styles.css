@@ -49,9 +49,9 @@ svg {
   background-color: #555454;
   border-radius: 50%;
   position: absolute;
-  top: 45%;
+  top: 40%;
 }
-.connector.left {
+.left {
   left: -5px;
 }
 .connector.right {

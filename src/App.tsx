@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 import './App.css';
@@ -14,40 +14,80 @@ import Layout from './Custom';
 import NoteIt from './Components/note-it';
 import ExpenseView from './Components/my-expenses';
 import FlowView from './Components/flow';
+import WorflowView from './Components/Workflows';
+import JBFlow from './Components/JBFlow';
 import DraggableDiv from './Components/DraggableDiv';
+import Coordinates from './Components/Coordinates';
+import ResizableRectangle from './Components/resizable';
 
 const Counter = lazy(() => import('./Components/counter'));
 
 function App() {
   const [user] = useLocalStorage<UserType>(IS_AUTH);
 
+  const routes = [
+    { path: '/', text: 'Home', element: <HomePage />, isProtected: false },
+    { path: '/user', text: 'User', element: <HomePage />, isProtected: true },
+    {
+      path: '/counter',
+      text: 'Counter',
+      element: <Counter />,
+      isProtected: true,
+    },
+    {
+      path: '/hierarchy',
+      text: 'common',
+      element: <TreeView />,
+      isProtected: false,
+    },
+    {
+      path: '/expenses',
+      text: 'Expenses',
+      element: <ExpenseView />,
+      isProtected: true,
+    },
+    { path: '/noteit', text: 'Notes', element: <NoteIt />, isProtected: true },
+    {
+      path: '/flows',
+      text: 'Flows',
+      element: <FlowView />,
+      isProtected: false,
+    },
+    {
+      path: '/workflows',
+      text: 'Workflows',
+      element: <WorflowView />,
+      isProtected: false,
+    },
+    {
+      path: '/jbflow',
+      text: 'JB Workflows',
+      element: <JBFlow />,
+      isProtected: false,
+    },
+    {
+      path: '/draggablediv',
+      text: 'Draggable Reactangle',
+      element: <DraggableDiv />,
+      isProtected: false,
+    },
+    { path: '/coordinates', text: 'Co-Ordinates', element: <Coordinates /> },
+    {
+      path: '/resizable',
+      text: 'Resizable Rectangle',
+      element: <ResizableRectangle />,
+      isProtected: false,
+    },
+  ];
+
   return (
     <BrowserRouter>
       <ul className="menu">
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/user">User</Link>
-        </li>
-        <li>
-          <Link to="/counter">Counter</Link>
-        </li>
-        <li>
-          <Link to="/hierarchy">common</Link>
-        </li>
-        <li>
-          <Link to="/expenses">expenses</Link>
-        </li>
-        <li>
-          <Link to="/noteit">Note</Link>
-        </li>
-        <li>
-          <Link to="/flows">flows</Link>
-        </li>
-        <li>
-          <Link to="/draggablediv">Draggble Div</Link>
-        </li>
+        {routes.map((k) => (
+          <li key={k.text}>
+            <Link to={k.path}>{k.text}</Link>
+          </li>
+        ))}
       </ul>
       {user && (
         <div className="user-login-status">
@@ -67,36 +107,16 @@ function App() {
 
       <div className="container">
         <Routes>
-          <Route path="/" element={<HomePage />}></Route>
-          <Route path="/counter" element={<ProtectedRoute />}>
-            <Route
-              path="/counter"
-              element={
-                <Suspense fallback="loading...">
-                  <Counter />
-                </Suspense>
-              }
-            ></Route>
-          </Route>
-
-          <Route
-            path="/hierarchy"
-            element={
-              <Suspense fallback="loading...">
-                <TreeView />
-              </Suspense>
-            }
-          ></Route>
-
-          <Route path="/user" element={<ProtectedRoute />}>
-            <Route path="/user" element={<User />} />
-          </Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/custom" element={<Layout />}></Route>
-          <Route path="/noteit" element={<NoteIt />}></Route>
-          <Route path="/expenses" element={<ExpenseView />}></Route>
-          <Route path="/flows" element={<FlowView />}></Route>
-          <Route path="/draggablediv" element={<DraggableDiv />}></Route>
+          {routes.map((k) => {
+            return k.isProtected ? (
+              <Route
+                path={k.path}
+                element={<Suspense fallback="loading...">{k.element}</Suspense>}
+              ></Route>
+            ) : (
+              <Route path={k.path} element={k.element}></Route>
+            );
+          })}
         </Routes>
       </div>
     </BrowserRouter>

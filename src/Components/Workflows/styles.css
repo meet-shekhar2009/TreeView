@@ -1,0 +1,82 @@
+.jb-wf-node {
+  padding: 10px;
+  border: 1px solid rgb(223, 220, 220);
+  border-radius: 5px;
+  min-width: 120px;
+  max-width: 300px;
+  background-color: white;
+  z-index: 10;
+  box-shadow: 2px 4px 18px rgba(0, 0, 0, 0.2);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  position: absolute;
+}
+.jb-wf-node:active {
+  cursor: move;
+}
+.svg-container {
+  height: 60vh;
+  border: 1px solid #f3eeee;
+  border-radius: 5px;
+  position: relative;
+}
+
+.workflows-actions-items-container {
+  background-color: #f5f5f5;
+  border: 1px solid #e5e3e3;
+}
+
+.svg-container svg {
+  background-color: #fffefe;
+  width: 100%;
+  height: 100%;
+}
+.connector {
+  height: 10px;
+  width: 10px;
+  background-color: #555454;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 12;
+}
+.connector.left {
+  top: 45%;
+  left: -6px;
+}
+.connector.right {
+  top: 45%;
+  right: -6px;
+}
+.connector.top {
+  top: -5px;
+  left: 42%;
+}
+.connector.bottom {
+  bottom: -5px;
+  left: 42%;
+}
+.diamond {
+  min-height: 130px;
+  min-width: 130px;
+  transform: rotate(45deg);
+}
+.diamond-content {
+  height: 100px;
+  width: 100px;
+  text-align: center;
+  display: table-cell;
+  transform: rotate(-45deg);
+  vertical-align: middle;
+}
+.diamond .connector.left {
+  top: 96%;
+}
+.diamond .connector.right {
+  top: -5%;
+}
+
+.diamond .connector.top {
+  left: -2%;
+}
+.diamond .connector.bottom {
+  left: 95%;
+}

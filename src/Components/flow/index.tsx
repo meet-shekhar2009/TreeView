@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import './styles.css';
+//import './styles.css';
 import classNames from 'classnames';
 import { debugPort } from 'node:process';
 export default function FlowView() {
@@ -88,8 +88,6 @@ export default function FlowView() {
     var dimensions_height = parseInt(
       ev.dataTransfer.getData('dimensions_height')
     );
-
-    console.log(typeof dimensions_width, typeof dimensions_height);
 
     const cust = customer.find((k) => k.id == id);
     if (cust) {
