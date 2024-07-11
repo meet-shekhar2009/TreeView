@@ -58,7 +58,7 @@ export default function Coordinates() {
       >
         {Object.entries(position).map(([name, value]) => {
           return (
-            <div style={{ width: '48%' }} key={name}>
+            <div style={{ width: '48%' }} key={name} className="box-conatiner">
               {name} : {value}
             </div>
           );

@@ -27,7 +27,9 @@ export interface TreeProps extends ExposedOptionalProps {
   isAddNewNode?: boolean;
   children?: any;
 }
-
+export interface Tree extends TreeProps {
+  renderHeader?: (props: any) => JSX.Element;
+}
 export type NodeProps = Omit<TreeProps, 'root'> & {
   currentNode?: Node;
   data: Node[];
@@ -85,6 +87,7 @@ export interface ExposedOptionalProps {
   onUpdateRow?: (data: Node | null) => Promise<boolean> | boolean;
   onDeleteRow?: (data: Node | null) => Promise<boolean> | boolean;
   render?: TreeProps['render'];
+  renderHeader?: Tree['renderHeader'];
   addIcon?: JSX.Element;
   removeIcon?: JSX.Element;
   expandIcon?: JSX.Element;

@@ -53,7 +53,7 @@ export default function DraggableDiv() {
       className={classNames('dragable', { drag: attribute.isDragging })}
     >
       <header id="dragzone" onMouseDown={dragMouseDown}>
-        <div className="wrapper">test</div>
+        <div className="wrapper">test1</div>
       </header>
     </div>
   );

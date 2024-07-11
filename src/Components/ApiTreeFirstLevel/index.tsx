@@ -13,6 +13,19 @@ interface Props {
   template?: TreeProps['render'];
 }
 
+function Header(props: Record<string, string>) {
+  return (
+    <div className="display-flex test-container">
+      <div style={{ width: '45%' }}>{props.fname}</div>
+      <div style={{ width: '45%' }}>{props.lname}</div>
+      <div>Action</div>
+    </div>
+  );
+}
+function HeaderTemplate() {
+  return <Header fname="Shekhar" lname="Bhardwaj" />;
+}
+
 const ApiTreeFirstLevel = ({
   apiService,
   datasource,
@@ -23,7 +36,6 @@ const ApiTreeFirstLevel = ({
 
   async function getData() {
     const response = await apiService.get('GET', '/list');
-
     setDatasource([...(response as Node[])]);
   }
 
@@ -65,7 +77,6 @@ const ApiTreeFirstLevel = ({
       ></Toast>
       <Tree
         data={datasource}
-        showAddButton={true}
         showDeleteButton={true}
         isEditable={false}
         onAddRow={handleAddRow}
@@ -74,6 +85,7 @@ const ApiTreeFirstLevel = ({
         addIcon={<i className="fa-solid fa-plus"></i>}
         removeIcon={<i className="fa-solid fa-minus"></i>}
         render={template}
+        renderHeader={HeaderTemplate}
       />
     </>
   );

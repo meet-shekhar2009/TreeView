@@ -1,0 +1,63 @@
+.snake-board .board-cell {
+  display: flex;
+  height: 30px;
+  width: 30px;
+  background-color: black;
+}
+.snake-board .board-row {
+  display: flex;
+  width: fit-content;
+  background-color: #000000;
+}
+
+.snake-board .snake-cell {
+  background-color: aqua;
+  border: 1px solid;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 15px aqua;
+}
+.snake-board .snake-food {
+  background-color: yellow;
+  border-radius: 16px 35px;
+}
+.snake-board .snake-head-right {
+  border-radius: 0px 15px 15px 0px;
+}
+.snake-board .snake-head-left {
+  border-radius: 15px 0px 0px 15px;
+}
+.snake-board .snake-head-up {
+  border-radius: 15px 15px 0px 0px;
+}
+.snake-board .snake-head-down {
+  border-radius: 0px 0px 15px 15px;
+}
+
+.snake-board .snake-head {
+  background-color: red;
+}
+.score {
+  background-color: black;
+  color: greenyellow;
+  font-size: 24px;
+  font-weight: bold;
+  width: 600px;
+  margin: 2px;
+  display: flex;
+}
+
+.score div {
+  width: 50%;
+}
+
+.snake-eye {
+  background-color: #000000;
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
+  margin: 2px;
+}
+.snake-tail {
+  background-color: red !important ;
+}

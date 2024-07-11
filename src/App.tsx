@@ -19,6 +19,10 @@ import JBFlow from './Components/JBFlow';
 import DraggableDiv from './Components/DraggableDiv';
 import Coordinates from './Components/Coordinates';
 import ResizableRectangle from './Components/resizable';
+import Notebook from './Components/NoteIt';
+import Spiral from './Components/spiral';
+import NoEffect from './Components/stream-remove-effect';
+import Game from './Components/snakeGame';
 
 const Counter = lazy(() => import('./Components/counter'));
 
@@ -78,6 +82,30 @@ function App() {
       element: <ResizableRectangle />,
       isProtected: false,
     },
+    {
+      path: '/notebook',
+      text: 'Notebook',
+      element: <Notebook />,
+      isProtected: false,
+    },
+    {
+      path: '/spiral',
+      text: 'Spiral',
+      element: <Spiral />,
+      isProtected: false,
+    },
+    {
+      path: '/noeffect',
+      text: 'noeffect',
+      element: <NoEffect />,
+      isProtected: false,
+    },
+    {
+      path: '/snake',
+      text: 'snake',
+      element: <Game />,
+      isProtected: false,
+    },
   ];
 
   return (
@@ -110,11 +138,12 @@ function App() {
           {routes.map((k) => {
             return k.isProtected ? (
               <Route
+                key={k.text}
                 path={k.path}
                 element={<Suspense fallback="loading...">{k.element}</Suspense>}
               ></Route>
             ) : (
-              <Route path={k.path} element={k.element}></Route>
+              <Route path={k.path} element={k.element} key={k.text}></Route>
             );
           })}
         </Routes>

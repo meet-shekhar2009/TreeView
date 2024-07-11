@@ -181,7 +181,7 @@ ul li {
 }
 .node-container.editable {
   display: inline-block;
-  width: 90%;
+  width: 80% !important;
 }
 .node-li {
   padding: 5px 0px 0px 0px;
@@ -249,4 +249,18 @@ ul li {
   top: 65px;
   right: 10px;
   min-width: 200px;
+}
+.s-row {
+  width: 400px;
+  display: flex;
+}
+.s-col {
+  width: 50px;
+  height: 50px;
+  background-color: aqua;
+  margin: 5px;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }

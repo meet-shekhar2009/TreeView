@@ -1,17 +1,24 @@
 import { useState } from 'react';
-import { TreeProps } from '../types';
+import { Tree as TreeCompProps } from '../types';
 import { v4 as uuidv4 } from 'uuid';
 import TreeNode from './TreeNode';
 
-const Tree = (props: TreeProps) => {
+const Tree = (props: TreeCompProps) => {
   const [data, setData] = useState(() => {
     if (!props.root) return [];
     return props.root.map((k) => ({ ...k }));
   });
-
+  const RenderHeader = props.renderHeader;
   return (
     <>
       <ul className="tree-ul">
+        {RenderHeader && (
+          <li className="node-li">
+            <span className="node-container editable">
+              <RenderHeader />
+            </span>
+          </li>
+        )}
         {props.root.map((k) => (
           <li className="node-li" key={k.id}>
             <TreeNode
