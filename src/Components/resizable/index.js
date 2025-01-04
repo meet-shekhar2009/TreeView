@@ -5,13 +5,15 @@ export default function ResizableRectangle() {
   const divRef = useRef(null);
   let pos1 = 0;
   let pos2 = 0;
+  let preHeight=0;
+  let preWidth=0;
 
   function handleMouseMove(e) {
     const currWidth = e.clientX - pos1;
     const currHeight = e.clientY - pos2;
-    divRef.current.style.width = divRef.current.offsetWidth + currWidth + 'px';
+    divRef.current.style.width = preWidth + currWidth + 'px';
     divRef.current.style.height =
-      divRef.current.offsetHeight + currHeight + 'px';
+      preHeight + currHeight + 'px';
   }
   function handleMouseUp(e) {
     document.onmousemove = null;
@@ -21,6 +23,10 @@ export default function ResizableRectangle() {
   function handleMouseDown(e) {
     pos1 = e.clientX;
     pos2 = e.clientY;
+    
+    preHeight=divRef.current.offsetHeight; 
+    preWidth=divRef.current.offsetWidth;
+    
     document.onmousemove = handleMouseMove;
     document.onmouseup = handleMouseUp;
   }
