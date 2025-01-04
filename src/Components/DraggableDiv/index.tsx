@@ -10,10 +10,8 @@ export default function DraggableDiv() {
     isDragging: false,
   });
   const elementRef = useRef(null);
-  let pos1 = 0,
-    pos2 = 0,
-    pos3 = 0,
-    pos4 = 0;
+  let x = 0,
+    y = 0;
 
   const dragMouseUp = () => {
     document.onmouseup = null;
@@ -24,22 +22,22 @@ export default function DraggableDiv() {
   const dragMouseMove = (event: any) => {
     event.preventDefault();
 
-    pos1 = pos3 - event.clientX;
-    pos2 = pos4 - event.clientY;
-    pos3 = event.clientX;
-    pos4 = event.clientY;
+    let xPos = x - event.clientX;
+    let yPos = y - event.clientY;
+    x = event.clientX;
+    y = event.clientY;
     setDivPosition((ele) => ({
       ...ele,
-      top: `${(elementRef.current as any).offsetTop - pos2}px`,
-      left: `${(elementRef.current as any).offsetLeft - pos1}px`,
+      left: `${(elementRef.current as any).offsetLeft - xPos}px`,
+      top: `${(elementRef.current as any).offsetTop - yPos}px`,
     }));
   };
 
   const dragMouseDown = (event: any) => {
     event.preventDefault();
 
-    pos3 = event.clientX;
-    pos4 = event.clientY;
+    x = event.clientX;
+    y = event.clientY;
     document.onmouseup = dragMouseUp;
     document.onmousemove = dragMouseMove;
 
